@@ -62,6 +62,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      logout: () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userData");
+
+        setStore({ token: null, name: "", image: "" });
+      },
+
       getMessage: async () => {
         try {
           // fetching data from the backend

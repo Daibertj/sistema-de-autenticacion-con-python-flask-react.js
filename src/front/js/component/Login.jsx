@@ -85,7 +85,7 @@ const Login = () => {
           </div>
         </form>
         <p className="text-center">
-          No tienes una cuenta? <Link to="/signup">Regístrate aquí</Link>
+          No tienes una cuenta? <Link to="/singup">Regístrate aquí</Link>
         </p>
       </div>
     </div>
