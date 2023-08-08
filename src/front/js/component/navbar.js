@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     actions.logout();
+    navigate("/");
   };
 
   return (
@@ -14,7 +16,7 @@ export const Navbar = () => {
       <div className="container">
         <span className="navbar-brand mb-0 h1">Auth Flask React</span>
         <div className="ml-auto">
-          {store.login && store.token == true ? (
+          {store.token ? (
             <button
               className="btn btn-danger"
               onClick={() => {
