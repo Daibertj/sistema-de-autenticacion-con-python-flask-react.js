@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       registerUser: async (user) => {
         const store = getStore();
-        console.log(user);
+
         try {
           let response = await fetch(`${process.env.BACKEND_URL}/signup`, {
             method: "POST",
