@@ -14,7 +14,7 @@ export const Navbar = () => {
       <div className="container">
         <span className="navbar-brand mb-0 h1">Auth Flask React</span>
         <div className="ml-auto">
-          {store.login && store.token != undefined ? (
+          {store.login && store.token == true ? (
             <button
               className="btn btn-danger"
               onClick={() => {

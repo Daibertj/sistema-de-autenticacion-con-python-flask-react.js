@@ -18,7 +18,7 @@ def set_password(password, salt):
 def check_password(password_hash, password, salt):
     return check_password_hash(password_hash, f"{password}{salt}")
 
-@api.route('/user', methods=['POST'])
+@api.route('/signup', methods=['POST'])
 def register_user():
 
     body = request.json 
@@ -58,3 +58,11 @@ def login():
         return jsonify({"token": token}), 200
     else:
         return jsonify({"msg": "Credenciales invalidas"}), 400
+
+@api.route('/userData' , methods=['GET'])
+@jwt_required()
+def get_user_data():
+
+    user_id= get_jwt_identity()
+    user= User.query.get(user_id)
+    return jsonify({"user": user.serialize()}), 200

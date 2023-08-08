@@ -3,18 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       message: null,
       token: localStorage.getItem("token") || null,
-      demo: [
-        {
-          title: "FIRST",
-          background: "white",
-          initial: "white",
-        },
-        {
-          title: "SECOND",
-          background: "white",
-          initial: "white",
-        },
-      ],
+      user: null,
+      login: false,
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -24,13 +14,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       registerUser: async (user) => {
         const store = getStore();
+        console.log(user);
         try {
-          let response = await fetch(`${process.env.BACKEND_URL}/user`, {
+          let response = await fetch(`${process.env.BACKEND_URL}/signup`, {
             method: "POST",
-            body: user,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
           });
 
-          let data = await response.json();
+          // let data = await response.json();
           return response.status;
         } catch (error) {
           console.log("Error registering user:", error);
@@ -64,9 +56,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       logout: () => {
         localStorage.removeItem("token");
-        localStorage.removeItem("userData");
 
-        setStore({ token: null, name: "", image: "" });
+        setStore({ token: null, user: "" });
       },
 
       getMessage: async () => {

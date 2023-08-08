@@ -16,16 +16,16 @@ const Login = () => {
   const handleLogin = async () => {
     let response = await actions.login(user);
     if (response == 200) {
-      if (response == 400) {
-        Swal.fire({
-          title: "Error!",
-          text: "Not found",
-          icon: "warning",
-          confirmButtonText: "Cool",
-        });
-        await actions.getUserData;
-        navigate(`/private`);
-      }
+      await actions.getUserData;
+      navigate(`/private`);
+    }
+    if (response == 400) {
+      Swal.fire({
+        title: "Error!",
+        text: "Not found",
+        icon: "warning",
+        confirmButtonText: "Cool",
+      });
     }
   };
 
@@ -85,7 +85,7 @@ const Login = () => {
           </div>
         </form>
         <p className="text-center">
-          No tienes una cuenta? <Link to="/singup">Regístrate aquí</Link>
+          No tienes una cuenta? <Link to="/signup">Regístrate aquí</Link>
         </p>
       </div>
     </div>
