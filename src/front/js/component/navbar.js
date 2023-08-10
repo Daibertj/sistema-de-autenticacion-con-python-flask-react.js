@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container">
-        <span className="navbar-brand mb-0 h1">Auth Flask React</span>
+        <span className="navbar-brand mb-0 h1">Auth Python Flask React</span>
         <div className="ml-auto">
           {store.token ? (
             <button
@@ -31,7 +31,7 @@ export const Navbar = () => {
                 <button className="btn btn-primary">Login</button>
               </Link>
               <Link to={"/signup"}>
-                <button className="btn btn-primary">Signup</button>
+                <button className="btn btn-primary ms-1">Signup</button>
               </Link>
             </div>
           )}

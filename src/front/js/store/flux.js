@@ -22,7 +22,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             body: JSON.stringify(user),
           });
 
-          // let data = await response.json();
           return response.status;
         } catch (error) {
           console.log("Error registering user:", error);

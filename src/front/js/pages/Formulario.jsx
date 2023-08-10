@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 const initialState = {
   email: "",
@@ -22,10 +23,15 @@ const Formulario = () => {
       const response = await actions.registerUser(user);
       if (response === 201 || 200) {
         console.log("Registro exitoso");
-
         navigate("/");
-      } else {
-        console.log("Error en el registro");
+      }
+      if (response == 400) {
+        Swal.fire({
+          title: "Error!",
+          text: "This user already exist",
+          icon: "warning",
+          confirmButtonText: "Ok",
+        });
       }
     } catch (error) {
       console.log("Error en la solicitud de registro:", error);
@@ -38,11 +44,12 @@ const Formulario = () => {
 
   return (
     <div className="container-fluid w-25 ">
-      <h1>Registro</h1>
+      <h1 className="row justify-content-center py-3">Signup</h1>
       <form>
         <div className="mb-3 row   ">
           <label className="col-sm-2 col-form-label">Email:</label>
           <input
+            className="form-control"
             type="email"
             value={user.email}
             id="email"
@@ -53,6 +60,7 @@ const Formulario = () => {
         <div className="mb-3 row   ">
           <label className="col-sm-2 col-form-label">Password:</label>
           <input
+            className="form-control"
             type="password"
             value={user.password}
             id="password"
@@ -60,9 +68,15 @@ const Formulario = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="button" onClick={handleSignup}>
-          Signup
-        </button>
+        <div className="d-grid gap-2 col-3  mx-auto p-2">
+          <button
+            className="btn btn-primary mb-2"
+            type="button"
+            onClick={handleSignup}
+          >
+            Signup
+          </button>
+        </div>
       </form>
       <p>
         Ya tienes una cuenta? <Link to="/">Inicia sesión aquí</Link>

@@ -8,9 +8,11 @@ const Private = () => {
     return <div>Debes hacer loggin para acceder a la pagina :/ </div>;
   }
   return (
-    <div>
-      <h1>Vista privada</h1>
-      <h2>Solo para usuarios que han hecho loggin</h2>
+    <div className="container">
+      <div className="justify-content-center">
+        <h1>Vista privada</h1>
+        <h2>Solo para usuarios que han hecho loggin</h2>
+      </div>
     </div>
   );
 };

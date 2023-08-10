@@ -37,7 +37,8 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
+      <h1 className="row justify-content-center py-3">Login</h1>
       <div className="row justify-content-center ">
         <form>
           <div className="form-group d-grid gap-2 col-6  mx-auto ">
@@ -77,7 +78,7 @@ const Login = () => {
           <div className="d-grid gap-2 col-6  mx-auto p-2">
             <button
               type="button"
-              className="btn btn-primary w-75 mx-auto"
+              className="btn btn-primary mx-auto my-3"
               onClick={handleLogin}
             >
               Login
