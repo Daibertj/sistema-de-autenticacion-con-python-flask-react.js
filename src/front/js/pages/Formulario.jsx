@@ -21,7 +21,7 @@ const Formulario = () => {
 
     try {
       const response = await actions.registerUser(user);
-      if (response == 200) {
+      if (response == 201) {
         console.log("Registro exitoso");
         navigate("/");
       }
